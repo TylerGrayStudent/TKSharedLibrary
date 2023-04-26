@@ -1,0 +1,14 @@
+<mat-selection-list
+  #items
+  [multiple]="multiple"
+  (selectionChange)="onSelectionChange($event)"
+>
+  <mat-list-option
+    *ngFor="let item of data; trackBy: identify"
+    [value]="item"
+    [selected]="isSelected(item)"
+  >
+    <!--  Use this for selected. Pipes are mad at me in stackblitz   [selected]="item | isSelected: _selectedData:uniqueId" -->
+    {{ item[displayProperty] || item }}
+  </mat-list-option>
+</mat-selection-list>

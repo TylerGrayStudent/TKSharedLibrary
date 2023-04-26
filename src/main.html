@@ -1,0 +1,13 @@
+<mat-card style="max-width: 500px; max-height: 100px; margin: 30px">
+  <input #input [ngModel]="search" (ngModelChange)="somethingChanged($event)" />
+  <tk-selection-list
+    [data]="shownData$ | async"
+    displayProperty="name"
+    uniqueId="id"
+    (dataSelectedChangedEvent)="log($event)"
+    (dataSelectionChanged)="log($event)"
+    [multiple]="true"
+  />
+
+  <button (click)="fake()">Fake button</button>
+</mat-card>
