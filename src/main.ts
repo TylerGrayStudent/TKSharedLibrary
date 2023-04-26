@@ -2,7 +2,7 @@ import 'zone.js/dist/zone';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { TKSelectionListComponent } from './components/tkselection-list/tkselection-list.component';
+import { TKSelectionListComponent } from './components/tk-selection-list/tk-selection-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';

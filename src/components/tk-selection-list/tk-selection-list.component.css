@@ -1,0 +1,20 @@
+.sort-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 8px 16px;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.sort-header:hover {
+  background-color: #e0e0e0;
+}
+
+.sort-header mat-icon {
+  margin-left: 4px;
+  font-size: 18px;
+}

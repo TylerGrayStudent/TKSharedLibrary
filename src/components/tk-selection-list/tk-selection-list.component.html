@@ -1,3 +1,8 @@
+<div *ngIf="headerText" class="sort-header" (click)="onSort()">
+  {{ headerText }}
+  <mat-icon *ngIf="sortDirection === 'asc'">arrow_drop_up</mat-icon>
+  <mat-icon *ngIf="sortDirection === 'desc'">arrow_drop_down</mat-icon>
+</div>
 <mat-selection-list
   #items
   [multiple]="multiple"

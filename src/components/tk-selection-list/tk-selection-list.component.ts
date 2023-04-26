@@ -6,15 +6,16 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { MatListModule, MatSelectionListChange } from '@angular/material/list';
 
 @Component({
   selector: 'tk-selection-list',
-  templateUrl: './tkselection-list.component.html',
-  styleUrls: ['./tkselection-list.component.css'],
+  templateUrl: './tk-selection-list.component.html',
+  styleUrls: ['./tk-selection-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatListModule, CommonModule],
+  imports: [MatListModule, CommonModule, MatIconModule],
 })
 export class TKSelectionListComponent {
   @Input() data: unknown[] = [];
@@ -24,11 +25,20 @@ export class TKSelectionListComponent {
   @Input() uniqueId = '';
   // Allow for multiple selections
   @Input() multiple = false;
+  // Input for the header text
+  @Input() headerText = '';
+  // Sort direction state
+  sortDirection: 'asc' | 'desc' | '' = '';
   // Emits currently selected values
   @Output() dataSelectionChanged = new EventEmitter<unknown[]>();
   // Emites the last clicked on value and if it was selected or unselected
   @Output() dataSelectedChangedEvent =
     new EventEmitter<DataSelectedChangedEvent>();
+  // Sort event emitter
+  @Output() sortChanged = new EventEmitter<{
+    direction: 'asc' | 'desc' | '';
+  }>();
+
   _selectedData: unknown[] = [];
   // TrackByFn
   identify(_: number, item: unknown) {
@@ -60,6 +70,10 @@ export class TKSelectionListComponent {
         selected: false,
       });
     });
+  }
+  onSort() {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    this.sortChanged.emit({ direction: this.sortDirection });
   }
   // TODO: Remove this and use pipe in real project
   isSelected(item: unknown): boolean {
