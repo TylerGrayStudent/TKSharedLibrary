@@ -1,0 +1,37 @@
+mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-option:first-child .mat-pseudo-checkbox {
+  display: none;
+}
+
+.franchise-option > * {
+  font-weight: bold !important;
+}
+
+.franchise-unclickable {
+  pointer-events: none;
+  font-size: inherit;
+  line-height: 3em;
+  height: 3em;
+  padding: 0 16px;
+}
+
+.additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+.sticky-header {
+  padding: 15px;
+  background: #e0e0e0;
+  height: auto;
+  top: 0;
+  z-index: 1;
+  position: sticky;
+  border-bottom: 1px solid black;
+  font-weight: bolder;
+  border-color: black;
+  box-shadow: 0 -6px 2px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important;
+}

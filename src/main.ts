@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BranchService } from './services/branch/branch.service';
 
 @Component({
   selector: 'my-app',
@@ -22,6 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './main.html',
 })
 export class App {
+  branches$ = this.service.allBranches$;
+  constructor(private service: BranchService) {}
   search = '';
   somethingChanged(event) {
     this.filter$.next(event);

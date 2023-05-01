@@ -12,3 +12,7 @@
 
   <button (click)="fake()">Fake page event</button>
 </mat-card>
+
+<mat-card>
+  <hq-branch-tree-selector [branches]="allBranches$ | async" />
+</mat-card>
