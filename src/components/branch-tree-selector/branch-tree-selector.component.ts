@@ -8,15 +8,21 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ControlValueAccessor,
+  FormsModule,
+  NG_VALUE_ACCESSOR,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {
   MatSelect,
   MatSelectChange,
   MatSelectModule,
 } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BehaviorSubject } from 'rxjs';
-import { Branch } from 'src/models/Branch';
+import { Branch } from '../../models/Branch';
 
 export interface BranchSelectionChangeEvent {
   selectedBranches: Branch[];
@@ -27,7 +33,14 @@ export interface BranchSelectionChangeEvent {
   selector: 'hq-branch-tree-selector',
   templateUrl: './branch-tree-selector.component.html',
   styleUrls: ['./branch-tree-selector.component.scss'],
-  imports: [CommonModule, MatSelectModule, MatCheckboxModule],
+  imports: [
+    CommonModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTooltipModule,
+    MatCheckboxModule,
+  ],
   standalone: true,
   providers: [
     {

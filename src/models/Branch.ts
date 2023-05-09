@@ -6,8 +6,8 @@ export interface Branch extends HQBase {
   name: string;
   classCode?: string;
   address?: Address;
-  openDate?: Date;
-  closeDate?: Date;
+  openDate?: Date | string;
+  closeDate?: Date | string;
   legacyBranchId?: number;
   timeSystemEnabled?: boolean;
   franchise?: Franchise;

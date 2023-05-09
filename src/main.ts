@@ -8,6 +8,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BranchService } from './services/branch/branch.service';
+import { BranchTreeSelectorComponent } from './components/branch-tree-selector/branch-tree-selector.component';
 
 @Component({
   selector: 'my-app',
@@ -19,6 +20,7 @@ import { BranchService } from './services/branch/branch.service';
     MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
+    BranchTreeSelectorComponent,
   ],
   templateUrl: './main.html',
 })

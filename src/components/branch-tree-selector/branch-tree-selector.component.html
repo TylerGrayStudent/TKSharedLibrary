@@ -1,0 +1,85 @@
+<!-- <div fxLayout="row" fxLayoutAlign="end"> -->
+<mat-form-field>
+  <mat-label>Branches</mat-label>
+  <mat-select
+    (selectionChange)="onSelectionChange($event)"
+    [multiple]="multiple"
+    [disabled]="disabled"
+    [matTooltip]="tooltip"
+    data-testid="branch-tree-selector__select"
+    #branchSelector
+  >
+    <div class="sticky-header">
+      Group By Franchise
+      <mat-checkbox
+        (change)="onGroupByFranchiseChange()"
+        [checked]="groupByFranchise$ | async"
+        style="margin-left: 10px"
+      ></mat-checkbox>
+    </div>
+    <mat-select-trigger>
+      {{
+        currSelectedBranches.length === 0
+          ? ''
+          : currSelectedBranchNames.join(', ')
+      }}
+    </mat-select-trigger>
+    <ng-container *ngIf="groupByFranchise$ | async; else branchList">
+      <div *ngFor="let franchise of branchGroupings">
+        <mat-option
+          [disabled]="!multiple"
+          [value]="franchise"
+          class="franchise-option"
+          *ngIf="multiple; else franchiseUnclickable"
+        >
+          <b>{{ franchise.name }}</b></mat-option
+        >
+        <ng-template #franchiseUnclickable
+          ><b class="franchise-unclickable">{{
+            franchise.name
+          }}</b></ng-template
+        >
+
+        <mat-option *ngFor="let branch of franchise.branches" [value]="branch">
+          &emsp;{{ branch.name }}
+        </mat-option>
+      </div>
+    </ng-container>
+    <ng-template #branchList>
+      <mat-option *ngFor="let branch of justBranches" [value]="branch">
+        {{ branch.name }}
+      </mat-option>
+    </ng-template>
+  </mat-select>
+</mat-form-field>
+
+<!-- <mat-form-field *ngIf="!(groupByFranchise$ | async)">
+    <mat-label>Branches</mat-label>
+    <mat-select
+      (selectionChange)="onSelectionChange($event)"
+      [multiple]="multiple"
+      [disabled]="disabled"
+      [matTooltip]="tooltip"
+    >
+      <div class="sticky-header">
+        Group By Franchise
+        <mat-checkbox
+          (change)="onGroupByFranchiseChange($event)"
+          [checked]="groupByFranchise$ | async"
+          style="margin-left: 10px"
+        ></mat-checkbox>
+      </div>
+      <mat-select-trigger>
+        {{
+          currSelectedBranches.length === 0
+            ? ''
+            : currSelectedBranchNames.join(', ')
+        }}
+      </mat-select-trigger>
+      <div *ngFor="let franchise of branchGroupings">
+        <mat-option *ngFor="let branch of franchise.branches" [value]="branch">
+          &emsp;{{ branch.name }}
+        </mat-option>
+      </div>
+    </mat-select>
+  </mat-form-field> -->

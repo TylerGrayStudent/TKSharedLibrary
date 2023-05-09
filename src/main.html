@@ -1,4 +1,4 @@
-<mat-card style="max-width: 500px; max-height: 100px; margin: 30px">
+<!-- <mat-card style="max-width: 500px; max-height: 100px; margin: 30px">
   <input #input [ngModel]="search" (ngModelChange)="somethingChanged($event)" />
   <tk-selection-list
     [data]="shownData$ | async"
@@ -11,8 +11,8 @@
   />
 
   <button (click)="fake()">Fake page event</button>
-</mat-card>
+</mat-card> -->
 
 <mat-card>
-  <hq-branch-tree-selector [branches]="allBranches$ | async" />
+  <hq-branch-tree-selector [branches]="branches$ | async" />
 </mat-card>
