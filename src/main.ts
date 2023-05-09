@@ -1,7 +1,8 @@
 import 'zone.js/dist/zone';
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { bootstrapApplication } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { TKSelectionListComponent } from './components/tk-selection-list/tk-selection-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -9,19 +10,10 @@ import { BehaviorSubject, combineLatest, map } from 'rxjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BranchService } from './services/branch/branch.service';
 import { BranchTreeSelectorComponent } from './components/branch-tree-selector/branch-tree-selector.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'my-app',
-  standalone: true,
-  imports: [
-    CommonModule,
-    TKSelectionListComponent,
-    MatCardModule,
-    MatPaginatorModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BranchTreeSelectorComponent,
-  ],
   templateUrl: './main.html',
 })
 export class App {
@@ -108,4 +100,45 @@ export class App {
   }
 }
 
-bootstrapApplication(App);
+@NgModule({
+  imports: [
+    BrowserModule,
+    CommonModule,
+    MatCardModule,
+    MatPaginatorModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    TKSelectionListComponent,
+    BranchTreeSelectorComponent,
+  ],
+  declarations: [App],
+  bootstrap: [App],
+  providers: [BranchService],
+})
+export class AppModule {}
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
+
+// @Component({
+//   selector: 'my-app',
+//   standalone: true,
+//   imports: [
+//     CommonModule,
+//     TKSelectionListComponent,
+//     MatCardModule,
+//     MatPaginatorModule,
+//     FormsModule,
+//     ReactiveFormsModule,
+//     BranchTreeSelectorComponent,
+//     BrowserAnimationsModule,
+//   ],
+//   templateUrl: './main.html',
+// })
+// export class App {
+
+// }
+
+// bootstrapApplication(App);
